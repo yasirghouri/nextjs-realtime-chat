@@ -25,7 +25,7 @@ export async function generateMetadata({
   )) as string
   const chatPartner = JSON.parse(chatPartnerRaw) as User
 
-  return { title: `FriendZone | ${chatPartner.name} chat` }
+  return { title: `FriendZone | ${chatPartner?.name} chat` }
 }
 
 interface PageProps {
@@ -87,8 +87,8 @@ const page = async ({ params }: PageProps) => {
               <Image
                 fill
                 referrerPolicy='no-referrer'
-                src={chatPartner.image}
-                alt={`${chatPartner.name} profile picture`}
+                src={chatPartner?.image}
+                alt={`${chatPartner?.name} profile picture`}
                 className='rounded-full'
               />
             </div>
@@ -97,11 +97,11 @@ const page = async ({ params }: PageProps) => {
           <div className='flex flex-col leading-tight'>
             <div className='text-xl flex items-center'>
               <span className='text-gray-700 mr-3 font-semibold'>
-                {chatPartner.name}
+                {chatPartner?.name}
               </span>
             </div>
 
-            <span className='text-sm text-gray-600'>{chatPartner.email}</span>
+            <span className='text-sm text-gray-600'>{chatPartner?.email}</span>
           </div>
         </div>
       </div>

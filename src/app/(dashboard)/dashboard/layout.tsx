@@ -8,7 +8,7 @@ import { fetchRedis } from '@/helpers/redis'
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id'
 import { SidebarOption } from '@/types/typings'
 import MobileChatLayout from '@/components/MobileChatLayout/MobileChatLayout'
-import { Icons } from '@/components/Icons/Icons'
+import { Icon, Icons } from '@/components/Icons/Icons'
 import SidebarChatList from '@/components/SidebarChatList/SidebarChatList'
 import FriendRequestSidebarOptions from '@/components/FriendRequestSidebarOptions/FriendRequestSidebarOptions'
 import SignOutButton from '@/components/SignOutButton/SignOutButton'
@@ -37,7 +37,6 @@ const Layout = async ({ children }: LayoutProps) => {
   if (!session) notFound()
 
   const friends = await getFriendsByUserId(session.user.id)
-  console.log('friends', friends)
 
   const unseenRequestCount = (
     (await fetchRedis(
@@ -80,7 +79,7 @@ const Layout = async ({ children }: LayoutProps) => {
 
               <ul role='list' className='-mx-2 mt-2 space-y-1'>
                 {sidebarOptions.map((option) => {
-                  const Icon = Icons[option.Icon]
+                  const Icon = Icons[option.Icon as Icon]
                   return (
                     <li key={option.id}>
                       <Link

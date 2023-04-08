@@ -8,7 +8,7 @@ import { FC, Fragment, useEffect, useState } from 'react'
 import { Session } from 'next-auth'
 import { SidebarOption } from '@/types/typings'
 import { usePathname } from 'next/navigation'
-import { Icons } from '../Icons/Icons'
+import { Icon, Icons } from '../Icons/Icons'
 import Button, { buttonVariants } from '../Button/Button'
 import SidebarChatList from '../SidebarChatList/SidebarChatList'
 import FriendRequestSidebarOptions from '../FriendRequestSidebarOptions/FriendRequestSidebarOptions'
@@ -101,7 +101,7 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({ friends, session, sidebar
                               </div>
                               <ul role='list' className='-mx-2 mt-2 space-y-1'>
                                 {sidebarOptions.map((option) => {
-                                  const Icon = Icons[option.Icon]
+                                  const Icon = Icons[option.Icon as Icon]
                                   return (
                                     <li key={option.name}>
                                       <Link
